@@ -10,11 +10,11 @@ export const addProduct = productData => {
   };
 };
 
-export const removeProduct = productId => {
+export const removeProduct = id => {
   return {
     type: REMOVE_PRODUCT,
     payload: {
-      productId,
+      id,
     },
   };
 };
