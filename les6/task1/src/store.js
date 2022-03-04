@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { counterReducer } from './counter.reducer';
 
-const logger = state => next => action => {
+const logger = store => next => action => {
   console.group(action.type);
   console.info('dispatching', action);
   let result = next(action);
