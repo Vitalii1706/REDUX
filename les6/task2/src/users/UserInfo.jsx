@@ -2,10 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Spinner from './Spinner';
 import { isFetchingSelector, userDataSelector } from './users.selectors';
-import PropTypes from 'prop-types';
-/*import * as userActions from './users.actions';
-import Pagination from './Pagination.jsx';
-*/
 
 const UserInfo = ({ userData, isFetching }) => {
   if (isFetching) {
@@ -25,16 +21,8 @@ const UserInfo = ({ userData, isFetching }) => {
   );
 };
 
-UserInfo.propTypes = {
-  userData: PropTypes.shape(),
-  isFetching: PropTypes.bool.isRequired,
-};
-
 const mapState = state => {
-  return {
-    isFetching: isFetchingSelector(state),
-    userData: userDataSelector(state),
-  };
+  return { userData: userDataSelector(state), isFetching: isFetchingSelector(state) };
 };
 
 export default connect(mapState)(UserInfo);
