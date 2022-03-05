@@ -25,7 +25,7 @@ const UserInfo = ({ userData, isFetching }) => {
   );
 };
 
-UserInfo.PropTypes = {
+UserInfo.propTypes = {
   userData: PropTypes.shape(),
   isFetching: PropTypes.bool.isRequired,
 };
