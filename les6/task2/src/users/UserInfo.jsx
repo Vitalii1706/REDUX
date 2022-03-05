@@ -32,6 +32,7 @@ UserInfo.propTypes = {
 
 UserInfo.defaultValue = {
   userData: null,
+  isFetching: false,
 };
 
 const mapState = state => {
