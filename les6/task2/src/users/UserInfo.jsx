@@ -25,4 +25,5 @@ const mapState = state => {
   return { userData: userDataSelector(state), isFetching: isFetchingSelector(state) };
 };
 
-export default connect(mapState)(UserInfo);
+const connector = connect(mapState);
+export default connector(UserInfo);
