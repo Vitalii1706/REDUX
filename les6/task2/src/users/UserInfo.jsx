@@ -30,11 +30,6 @@ UserInfo.propTypes = {
   isFetching: PropTypes.bool.isRequired,
 };
 
-UserInfo.defaultValue = {
-  userData: null,
-  isFetching: false,
-};
-
 const mapState = state => {
   return {
     isFetching: isFetchingSelector(state),
