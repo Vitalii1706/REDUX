@@ -1,46 +1,34 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import * as usersActions from './users.actions';
 
-class SearchField extends Component {
-  state = {
-    userName: '',
-  };
+const SearchField = ({ fetchUserData }) => {
+  const [userName, setUserName] = useState('');
 
-  onChange = event => {
-    this.setState({
-      userName: event.target.value,
-    });
-  };
-
-  heandleUserSearch = () => {
-    this.props.fetchUserData(this.state.userName);
-  };
-
-  render() {
-    return (
-      <div className="name-form">
-        <input
-          type="text"
-          className="name-form__input"
-          onChange={this.onChange}
-          value={this.state.userName}
-        />
-        <button className="name-form__btn btn" onClick={this.heandleUserSearch}>
-          Show
-        </button>
-      </div>
-    );
-  }
-}
-
-SearchField.propTypes = {
-  fetchUserData: PropTypes.func.isRequired,
+  return (
+    <div className="name-form">
+      <input
+        type="text"
+        className="name-form__input"
+        value={userName}
+        onChange={e => setUserName(e.target.value)}
+      />
+      <button
+        className="name-form__btn btn"
+        onClick={() => {
+          fetchUserData(userName);
+        }}
+      >
+        Show
+      </button>
+    </div>
+  );
 };
 
 const mapDispatch = {
   fetchUserData: usersActions.fetchUserData,
 };
 
-export default connect(null, mapDispatch)(SearchField);
+const connector = connect(null, mapDispatch);
+export default connector(SearchField);
